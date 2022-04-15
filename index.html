@@ -5,71 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <style>
-    
-    body {
-        font-family: 'Roboto';
-    }
-
-    .description {
-        max-width: 300px;
-        width: 80%;
-        
-        display: flex;
-        flex-direction: column;
-
-        top: 50%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-    }
-
-    .description label {
-        font-size: 30px;
-        text-align: center;
-        margin-bottom: 20px;
-        color: #4e4d4d;
-        font-family: 'Montserrat';
-    }
-
-    .description p {
-        color: gray;
-        text-align: justify;
-    }
-
-    .action {
-		margin-top: 25px;
-		background-color: #8086f0 !important;
-	}
-    
+	  
+    <style type="text/css">
+  	.message-bubble{font-family:Nunito Sans,sans-serif;display:flex;flex-flow:row wrap;position:fixed;background:#fff;color:#909ba9;right:calc(100px + 2%);max-width:240px;bottom:60px;padding:1em 1em 12px 12px;border-radius:13px 13px 2px 13px;box-shadow:1px -1px 9px rgba(0,0,0,.75);z-index:980;animation:toggle-bubble .5s ease-out;margin-left:15px;line-height:1.5em;transform-origin:100% 100%}.message-bubble::after{bottom:0;content:'';position:absolute;left:calc(100% - 15px);width:0;border:14px solid transparent;border-bottom-color:#fff;border-radius:4.5px}.message-bubble::before{bottom:0;content:'';position:absolute;left:calc(100% - 12px);width:0;border:15px solid transparent;border-bottom-color:rgba(0,0,0,.25);filter:blur(2px);border-radius:4.5px}.message-bubble p{margin:0}.message-bubble p+p{margin-block:.4em 0}.message-bubble .close-button{position:absolute;right:5px;top:5px;width:.7em;height:.7em;opacity:.3}.message-bubble .close-button:hover{opacity:1;cursor:pointer}.message-bubble .close-button:before,.message-bubble .close-button:after{position:absolute;content:' ';height:.7999999999999999em;width:2px;background-color:#333}.message-bubble .close-button:before{transform:rotate(45deg)}.message-bubble .close-button:after{transform:rotate(-45deg)}@-moz-keyframes toggle-bubble{from{transform:scale(.1)}to{transform:scale(1)}}@-webkit-keyframes toggle-bubble{from{transform:scale(.1)}to{transform:scale(1)}}@-o-keyframes toggle-bubble{from{transform:scale(.1)}to{transform:scale(1)}}@keyframes toggle-bubble{from{transform:scale(.1)}to{transform:scale(1)}}
     </style>
-    
-    <script src="blip-chat.js"></script>
-    <script src="bubble.js"></script>
-    <link rel="stylesheet" href="bubble.css">
     
     <title>HeroBot para páginas de ofertas</title>
   </head>
   
   <body>
-    
-    <div class="description">
-
-        <label>Message Bubble</label>
-        <p>
-            Chat com animações do icone customizados,
-            e balão com uma mensagem, que some depois de um tempo.
-        </p>
-        <p>
-            Chama a atenção, mas não incomoda.
-        </p>
-
-        <button class="btn waves-effect waves-light action" onclick="changeBubble()">
-            Mudar Balão
-        </button>
-
-    </div>
+	  
+    <div class="message-bubble">
+  <p>Qual é a sua dúvida?</p>
+  <p>Vamos conversar sobre isso!</p>
+  <span class="close-button" id="bubble-msg" onclick="this.parentElement.style.display='none'"></span>
+</div>
     
     
     <script src="https://unpkg.com/blip-chat-widget" type="text/javascript">
@@ -81,6 +31,8 @@
                 .withAppKey('cm91dGVyZ2VyYWxlYWRzaGFyM3BrNzVhMHdyZnY6ZmQ4MDRkMjEtZTc1MC00OTllLWE0MWItNGI2YmU4OTQwYjE2')
                 .withButton({"color":"#FF305C","icon":"https://blipmediastore.blob.core.windows.net/public-medias/Media_8c0074d5-7942-43e1-bcad-365599774ca2"})
                 .withCustomCommonUrl('https://herospark.chat.blip.ai/')
+		.withEventHandler(BlipChat.LOAD_EVENT, function () {
+                    document.getElementById('bubble-msg').click() })
                 .build();
             }
         })();
