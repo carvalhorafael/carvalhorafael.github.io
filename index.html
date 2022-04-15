@@ -146,12 +146,21 @@
     <script>
         (function () {
             window.onload = function () {
-                new BlipChat()
-                .withAppKey('cm91dGVyZ2VyYWxlYWRzaGFyM3BrNzVhMHdyZnY6ZmQ4MDRkMjEtZTc1MC00OTllLWE0MWItNGI2YmU4OTQwYjE2')
-                .withButton({"color":"#FF305C","icon":"https://blipmediastore.blob.core.windows.net/public-medias/Media_8c0074d5-7942-43e1-bcad-365599774ca2"})
-                .withCustomCommonUrl('https://herospark.chat.blip.ai/')
-		.withEventHandler(BlipChat.LOAD_EVENT, function () {
-                    document.getElementById('bubble-msg').click() })
+                var blipClient = new BlipChat();
+		blipClient
+			.withAppKey('cm91dGVyZ2VyYWxlYWRzaGFyM3BrNzVhMHdyZnY6ZmQ4MDRkMjEtZTc1MC00OTllLWE0MWItNGI2YmU4OTQwYjE2')
+			.withButton({"color":"#FF305C","icon":"https://blipmediastore.blob.core.windows.net/public-medias/Media_8c0074d5-7942-43e1-bcad-365599774ca2"})
+			.withCustomCommonUrl('https://herospark.chat.blip.ai/')
+			.withEventHandler(BlipChat.LOAD_EVENT, function () {
+			    document.getElementById('bubble-msg').click();
+			    blipClient.sendMessage({
+				  "type": "text/plain",
+				  "content": "Start",
+				  "metadata":{
+				    "#blip.hiddenMessage": true
+				   }
+			     });
+			})
                 .build();
             }
         })();
