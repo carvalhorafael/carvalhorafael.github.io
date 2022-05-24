@@ -147,11 +147,17 @@
     <script>
         (function () {
             window.onload = function () {
+		var currentLocation = window.location.href;
                 var blipClient = new BlipChat();
 		blipClient
 			.withAppKey('cm91dGVyZ2VyYWxlYWRzaGFyM3BrNzVhMHdyZnY6ZmQ4MDRkMjEtZTc1MC00OTllLWE0MWItNGI2YmU4OTQwYjE2')
 			.withButton({"color":"#7427F1","icon":"https://blipmediastore.blob.core.windows.net/public-medias/Media_8c0074d5-7942-43e1-bcad-365599774ca2"})
 			.withCustomCommonUrl('https://herospark.chat.blip.ai/')
+		    	.withAccount({
+              			extras: {
+                  			url: currentLocation
+              			}
+            		})
 			.withEventHandler(BlipChat.LOAD_EVENT, function () {
 			    document.getElementById('bubble-msg').click();
 			    blipClient.sendMessage({
