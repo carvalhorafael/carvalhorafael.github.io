@@ -156,6 +156,7 @@
 		    	.withAccount({extras: {url: currentLocation}})
 			.withEventHandler(BlipChat.LOAD_EVENT, function () {
 			    //document.getElementById('bubble-msg').click();
+			console.log('chat loaded');
 			    document.getElementById('bubble-msg-box').style.display = 'inline';
 			    blipClient.sendMessage({
 				  "type": "text/plain",
