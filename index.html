@@ -135,7 +135,7 @@
   
   <body>
 	  
-    	<div class="message-bubble">
+    	<div class="message-bubble" id="bubble-msg-box" style="display: none;">
   		<p>Qual é a sua dúvida?</p>
   		<p>Vamos conversar sobre isso!</p>
   		<span class="close-button" id="bubble-msg" onclick="this.parentElement.style.display='none'"></span>
@@ -156,6 +156,7 @@
 		    	.withAccount({extras: {url: currentLocation}})
 			.withEventHandler(BlipChat.LOAD_EVENT, function () {
 			    //document.getElementById('bubble-msg').click();
+			    document.getElementById('bubble-msg-box').style.display = 'inline';
 			    blipClient.sendMessage({
 				  "type": "text/plain",
 				  "content": "Start",
