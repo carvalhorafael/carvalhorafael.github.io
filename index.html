@@ -156,7 +156,6 @@
 		    	.withAccount({extras: {url: currentLocation}})
 			.withEventHandler(BlipChat.LOAD_EVENT, function () {
 			    document.getElementById('bubble-msg').click();
-			    document.getElementById('bubble-msg-box').style.display = 'inline';
 			    blipClient.sendMessage({
 				  "type": "text/plain",
 				  "content": "Start",
@@ -171,6 +170,10 @@
                 .build();
             }
         })();
+	    
+	document.querySelector('#blip-chat-open-iframe').addEventListener('load', function(){
+  	  document.getElementById('bubble-msg-box').style.display = 'inline';
+	});
     </script>
     
     
