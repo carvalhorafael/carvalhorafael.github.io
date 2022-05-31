@@ -155,8 +155,7 @@
 			.withCustomCommonUrl('https://herospark.chat.blip.ai/')
 		    	.withAccount({extras: {url: currentLocation}})
 			.withEventHandler(BlipChat.LOAD_EVENT, function () {
-			    //document.getElementById('bubble-msg').click();
-			console.log('chat loaded');
+			    document.getElementById('bubble-msg').click();
 			    document.getElementById('bubble-msg-box').style.display = 'inline';
 			    blipClient.sendMessage({
 				  "type": "text/plain",
@@ -166,6 +165,9 @@
 				   }
 			     });
 			})
+		    .withEventHandler(BlipChat.ENTER_EVENT, function () {
+              		console.log('enter')
+	            })
                 .build();
             }
         })();
