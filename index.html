@@ -164,16 +164,15 @@
 				   }
 			     });
 			})
-		    .withEventHandler(BlipChat.ENTER_EVENT, function () {
-              		console.log('enter')
-	            })
                 .build();
+		    
+	        document.querySelector('#blip-chat-open-iframe').addEventListener('load', function(){
+  	          document.getElementById('bubble-msg-box').style.display = 'inline';
+	        });
             }
         })();
 	    
-	document.querySelector('#blip-chat-open-iframe').addEventListener('load', function(){
-  	  document.getElementById('bubble-msg-box').style.display = 'inline';
-	});
+	
     </script>
     
     
